@@ -28,10 +28,12 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Node Project
-        # You may pin to the exact commit or the version.
-        # uses: adamhamlin/checkout-node-project@7a3c177c0515927b18f88aa5901a6761c9298a58
-        uses: adamhamlin/checkout-node-project@v0.1.0
+      - name: Checkout
+        uses: actions/checkout@v2.5.0
+      - name: Install yarn
+        run: npm install -g yarn
+      - name: Install dependencies
+        run: yarn install
       - name: Create dist files
         run: yarn build
       - name: Setup Pages
