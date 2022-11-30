@@ -22,8 +22,8 @@ export default class SnapshotPlugin implements Plugin {
   button?: HTMLButtonElement
   player?: SnapshotEnabledPlayer
   container?: PlayerRoot
-  snapshotWidth: number
-  snapshotHeight: number
+  snapshotWidth: number = 1920
+  snapshotHeight: number = 1080
   init(config: SnapshotPluginConfig, container: PlayerRoot, player: SnapshotEnabledPlayer) {
     this.player = player
     this.container = container
@@ -40,8 +40,6 @@ export default class SnapshotPlugin implements Plugin {
   }
 
   render() {
-    if (this.button) this.button.parentElement?.removeChild(this.button)
-
     this.button = document.createElement("button")
     this.button.className = "snapshot-button"
     this.button.innerText = "Snapshot"
